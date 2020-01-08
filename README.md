@@ -1,4 +1,4 @@
-# Installing GitHub Enterprise Server on = AWS
+# Installing GitHub Enterprise Server on AWS
 
 <div class="3D&quot;lead-mktg&quot;">
 
@@ -6,39 +6,39 @@ To install GitHub Enterprise Server on Amazon Web Services (AWS), you must launc
 
 </div>
 
-*   [Prerequisites](3D"https://help.github.com/en/enter=)
+*   [Prerequisites]
 
-*   [Hardware considerations](3D"https://help.github.com/en/enter=)
+*   [Hardware considerations]
 
-*   [Determining the instance type](3D"https://help.github.com/en/enter=)
+*   [Determining the instance type]
 
-*   [Selecting the GitHub Enterprise S= erver AMI](3D"https://help.github.com/en/enter=)
+*   [Selecting the GitHub Enterprise Server AMI]
 
-*   [Creating a security group](3D"https://help.github.com/en/enter=)
+*   [Creating a security group]
 
-*   [Creating the GitHub Enterpris= e Server instance](3D"https://help.github.com/en/enter=)
+*   [Creating the GitHub Enterprise Server instance]
 
-*   [Configuring the GitHub Ent= erprise Server instance](3D"https://help.github.com/en/enter=)
+*   [Configuring the GitHub Enterprise Server instance]
 
 ### Prerequisites
 
-*   You must have a GitHub Enterprise license file. To download an existing = license file or request a trial license, visit [enterprise.github.com](3D"https://enterpris=). For more information, see= "[Managing your GitHub Enterprise Server license](3D"https://help.github.com/enterprise/2.19/admin/guides/installat=)."
+*   You must have a GitHub Enterprise license file. To download an existing = license file or request a trial license, visit [enterprise.github.com]. For more information, see= "[Managing your GitHub Enterprise Server license]."
 
-*   You must have an AWS account capable of launching EC2 instances and crea= ting EBS volumes. For more information, see the [Amazon Web Services website](3D"https://aws.amaz=).
+*   You must have an AWS account capable of launching EC2 instances and crea= ting EBS volumes. For more information, see the [Amazon Web Services website].
 
-*   Most actions needed to launch your GitHub Enterprise Server instance may= also be performed using the AWS management console. However, we recommend = installing the AWS command line interface (CLI) for initial setup. Examples= using the AWS CLI are included below. For more information, see Amazon's g= uides "[Working with the AWS Management Console](3D"http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/=)" and "[What is the AWS Command Line Interface](3D"http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.ht=)."
+*   Most actions needed to launch your GitHub Enterprise Server instance may= also be performed using the AWS management console. However, we recommend = installing the AWS command line interface (CLI) for initial setup. Examples= using the AWS CLI are included below. For more information, see Amazon's g= uides "[Working with the AWS Management Console]" and "[What is the AWS Command Line Interface]."
 
 This guide assumes you are familiar with the following AWS concepts:
 
-*   [Launching EC2 Instances](3D"http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Launching=)
-*   [Managing EBS Volumes](3D"http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS=)
-*   [Using Security Groups](3D"http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-net=) (For managing network access = to your instance)
-*   [Elastic IP Addresses (EIP)](3D"http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-i=) (Strongly recommended = for production environments)
-*   [EC2 and Virtual Private Cloud](3D"http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-vpc=) (If you plan to launch into a Virt= ual Private Cloud)
+*   [Launching EC2 Instances]
+*   [Managing EBS Volumes]
+*   [Using Security Groups] (For managing network access = to your instance)
+*   [Elastic IP Addresses (EIP)] (Strongly recommended = for production environments)
+*   [EC2 and Virtual Private Cloud] (If you plan to launch into a Virt= ual Private Cloud)
 
-### [Hardware considerations](3D"https://help.github.com/en/en=)
+### [Hardware considerations]
 
-GitHub Enterprise Server requires a persistent data disk separate from t= he root disk. For more information, see "[System overview](3D"https://help.github.com=)."
+GitHub Enterprise Server requires a persistent data disk separate from t= he root disk. For more information, see "[System overview]."
 
 We recommend different hardware configurations based on the number of us= er licenses used in your GitHub Enterprise Server instance.
 
@@ -138,7 +138,7 @@ We recommend different hardware configurations based on the number of us= er lic
 
 </table>
 
-These are minimum recommendations. More resources may be required depend= ing on your usage, such as user activity and selected integrations. When in= creasing CPU resources, it's recommended to add at least 6.5 GB of memory f= or each CPU (up to 16 CPUs) added to your GitHub Enterprise Server instance= . For more information, see "[Increasing CPU or memory resources](3D"https://help.github.com/en/enterprise=)."
+These are minimum recommendations. More resources may be required depend= ing on your usage, such as user activity and selected integrations. When in= creasing CPU resources, it's recommended to add at least 6.5 GB of memory f= or each CPU (up to 16 CPUs) added to your GitHub Enterprise Server instance= . For more information, see "[Increasing CPU or memory resources]."
 
 <div class="3D&quot;extended-markdown" note="" border="" rounded-1="" mb-4="" p-3="" border-blue="bg-blue-light" f5"="">
 
@@ -146,13 +146,13 @@ These are minimum recommendations. More resources may be required depend= ing on
 
 </div>
 
-### [Determining the instance type](3D"https://help.github.com=)
+### [Determining the instance type]
 
 Before launching your GitHub Enterprise Server instance on AWS, you'll n= eed to determine the type of virtual machine that best fits the needs of yo= ur organization.
 
-#### [Supported instance types](3D"https://help.github.com/en/e=)
+#### [Supported instance types]
 
-GitHub Enterprise Server is supported on the following EC2 instance type= s. For more information, see [the AWS EC2 instance type overview page](3D"http://aws.amazon.com/ec2/instance-=).
+GitHub Enterprise Server is supported on the following EC2 instance type= s. For more information, see [the AWS EC2 instance type overview page].
 
 <table>
 
@@ -178,26 +178,6 @@ GitHub Enterprise Server is supported on the following EC2 instance type= s. For
 
 </tr>
 
-</tbody>
-
-</table>
-
-<table>
-
-<thead>
-
-<tr>
-
-<th>EC2 instance type</th>
-
-<th>Model</th>
-
-</tr>
-
-</thead>
-
-<tbody>
-
 <tr>
 
 <td>C4</td>
@@ -205,26 +185,6 @@ GitHub Enterprise Server is supported on the following EC2 instance type= s. For
 <td>c4.2xlarge, c4.4xlarge, c4.8xlarge</td>
 
 </tr>
-
-</tbody>
-
-</table>
-
-<table>
-
-<thead>
-
-<tr>
-
-<th>EC2 instance type</th>
-
-<th>Model</th>
-
-</tr>
-
-</thead>
-
-<tbody>
 
 <tr>
 
@@ -234,26 +194,6 @@ GitHub Enterprise Server is supported on the following EC2 instance type= s. For
 
 </tr>
 
-</tbody>
-
-</table>
-
-<table>
-
-<thead>
-
-<tr>
-
-<th>EC2 instance type</th>
-
-<th>Model</th>
-
-</tr>
-
-</thead>
-
-<tbody>
-
 <tr>
 
 <td>M3</td>
@@ -261,26 +201,6 @@ GitHub Enterprise Server is supported on the following EC2 instance type= s. For
 <td>m3.xlarge, m3.2xlarge</td>
 
 </tr>
-
-</tbody>
-
-</table>
-
-<table>
-
-<thead>
-
-<tr>
-
-<th>EC2 instance type</th>
-
-<th>Model</th>
-
-</tr>
-
-</thead>
-
-<tbody>
 
 <tr>
 
@@ -290,26 +210,6 @@ GitHub Enterprise Server is supported on the following EC2 instance type= s. For
 
 </tr>
 
-</tbody>
-
-</table>
-
-<table>
-
-<thead>
-
-<tr>
-
-<th>EC2 instance type</th>
-
-<th>Model</th>
-
-</tr>
-
-</thead>
-
-<tbody>
-
 <tr>
 
 <td>M5</td>
@@ -317,26 +217,6 @@ GitHub Enterprise Server is supported on the following EC2 instance type= s. For
 <td>m5.large, m5.xlarge, m5.2xlarge, m5.4xlarge, m5.12xlarge, m5.24xlarge</td>
 
 </tr>
-
-</tbody>
-
-</table>
-
-<table>
-
-<thead>
-
-<tr>
-
-<th>EC2 instance type</th>
-
-<th>Model</th>
-
-</tr>
-
-</thead>
-
-<tbody>
 
 <tr>
 
@@ -346,26 +226,6 @@ GitHub Enterprise Server is supported on the following EC2 instance type= s. For
 
 </tr>
 
-</tbody>
-
-</table>
-
-<table>
-
-<thead>
-
-<tr>
-
-<th>EC2 instance type</th>
-
-<th>Model</th>
-
-</tr>
-
-</thead>
-
-<tbody>
-
 <tr>
 
 <td>R5</td>
@@ -373,26 +233,6 @@ GitHub Enterprise Server is supported on the following EC2 instance type= s. For
 <td>r5.large, r5.xlarge, r5.2xlarge, r5.4xlarge, r5.12xlarge, r5.24xlarge</td>
 
 </tr>
-
-</tbody>
-
-</table>
-
-<table>
-
-<thead>
-
-<tr>
-
-<th>EC2 instance type</th>
-
-<th>Model</th>
-
-</tr>
-
-</thead>
-
-<tbody>
 
 <tr>
 
@@ -406,9 +246,9 @@ GitHub Enterprise Server is supported on the following EC2 instance type= s. For
 
 </table>
 
-#### [Recommended instance types](3D"https://help.github.com/en=)
+#### [Recommended instance types]
 
-Based on your user license count, we recommend the following instance ty= pes.
+Based on your user license count, we recommend the following instance types.
 
 <table>
 
@@ -472,19 +312,19 @@ Based on your user license count, we recommend the following instance ty= pes.
 
 <div class="3D&quot;extended-markdown" warning="" border="" rounded-1="" mb-4="" p-3="" border-re="d" bg-red-light="" f5"="">
 
-**Note:** You can always scale up your CPU or memory by res= izing your instance. However, because resizing your CPU or memory requires = downtime for your users, we recommend over-provisioning resources to accoun= t for scale.
+**Note:** You can always scale up your CPU or memory by res= izing your instance. However, because resizing your CPU or memory requires = downtime for your users, we recommend over-provisioning resources to account for scale.
 
 </div>
 
-### [Selecting t= he GitHub Enterprise Server AMI](3D"https://he=)
+### [Selecting t= he GitHub Enterprise Server AMI]
 
 You can select an Amazon Machine Image (AMI) for GitHub Enterprise Serve= r using the GitHub Enterprise Server portal or the AWS CLI.
 
-AMIs for GitHub Enterprise Server are available in the AWS GovCloud (US-= East and US-West) region. This allows US customers with specific regulatory= requirements to run GitHub Enterprise Server in a federally compliant clou= d environment. For more information on AWS's compliance with federal and ot= her standards, see [AWS's Gov= Cloud (US) page](3D"http://aws.amazon.com/govcloud-us/") and [AWS'= s compliance page](3D"https://aws.amazon.com/compliance/").
+AMIs for GitHub Enterprise Server are available in the AWS GovCloud (US-= East and US-West) region. This allows US customers with specific regulatory= requirements to run GitHub Enterprise Server in a federally compliant clou= d environment. For more information on AWS's compliance with federal and ot= her standards, see [AWS's Gov= Cloud (US) page] and [AWS' compliance page]("https://aws.amazon.com/compliance/").
 
-#### <a hr="ef=3D&quot;https://help.github.com/en/enterprise/2.19/admin/installation/install=" ing-github-enterprise-server-on-aws#using-the-github-enterprise-server-port="al-to-select-an-ami&quot;">Using the GitHub Enterprise Server portal to select an= AMI</a>
+#### Using the GitHub Enterprise Server portal to select an AMI<
 
-1.  Navigate to [the GitHu= b Enterprise Server download page](3D"https://enterprise.github.com/download").
+1.  Navigate to [the GitHu= b Enterprise Server download page].
 
 2.  Click **Get the latest release of GitHub Enterprise Server.**
 
@@ -498,7 +338,7 @@ AMIs for GitHub Enterprise Server are available in the AWS GovCloud (US-= East a
 
 **
 
-#### [Using the AWS CLI to select= an AMI](3D"https://help.githu=)
+#### [Using the AWS CLI to select= an AMI]
 
 1.  Using the AWS CLI, get a list of GitHub Enterprise Server images publish= ed by GitHub's AWS owner IDs (`025577942450` for GovCloud, and <= code>895557238572 for other regions). For more information, see "[describe-images](3D"http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images=)" in the AWS documentation.
 
@@ -509,19 +349,19 @@ AMIs for GitHub Enterprise Server are available in the AWS GovCloud (US-= East a
 
 2.  Take note of the AMI ID for the latest GitHub Enterprise Server image.<= /li>
 
-### [Creating a security group](3D"https://help.github.com/en/=)
+### [Creating a security group]
 
-If you're setting up your AMI for the first time, you will need to creat= e a security group and add a new security group rule for each port in the t= able below. For more information, see the AWS guide "[Using Security Groups=](3D"http://docs=) ."
+If you're setting up your AMI for the first time, you will need to creat= e a security group and add a new security group rule for each port in the t= able below. For more information, see the AWS guide "[Using Security Groups=]."
 
-1.  Using the AWS CLI, create a new security group. For more information, se= e "[create-security-group](3D"http://docs.aws.amazon.com/cli/latest/reference/ec2/create-se=)" in the AWS documentation.
+1.  Using the AWS CLI, create a new security group. For more information, see "[create-security-group](3D"http://docs.aws.amazon.com/cli/latest/reference/ec2/create-se=)" in the AWS documentation.
 
         $ aws ec2 create-security-group --=
         group-name SECURITY_GROUP_NAME --description "SECURITY GROUP D=
         ESCRIPTION"
 
-2.  Take note of the security group ID (`sg-xxxxxxxx`) of your ne= wly created security group.
+2.  Take note of the security group ID (`sg-xxxxxxxx`) of your newly created security group.
 
-3.  Create a security group rule for each of the ports in the table below. F= or more information, see "[authorize-security-gro= up-ingress](3D"http://docs.aws.amazon.com/cli/latest/=)" in the AWS documentation.
+3.  Create a security group rule for each of the ports in the table below. F= or more information, see "[authorize-security-group-ingress](3D"http://docs.aws.amazon.com/cli/latest/=)" in the AWS documentation.
 
         $ aws ec2 authorize-security-gro=
         up-ingress --group-id SECURITY_GROUP_ID --protocol PROTOCOL --port PORT_NUMBER --cidr SOURCE IP RANGE
@@ -574,7 +414,7 @@ If you're setting up your AMI for the first time, you will need to creat= e a se
 
     <td>HTTP</td>
 
-    <td>Web application access. _All requests are redirected to the HTTPS po= rt when SSL is enabled._</td>
+    <td>Web application access. _All requests are redirected to the HTTPS po= rt when SSL is enabled.</td>
 
     </tr>
 
@@ -584,7 +424,7 @@ If you're setting up your AMI for the first time, you will need to creat= e a se
 
     <td>SSH</td>
 
-    <td>Instance shell access. _The default SSH port (22) is dedicated to ap= plication git+ssh network traffic._</td>
+    <td>Instance shell access. _The default SSH port (22) is dedicated to ap= plication git+ssh network traffic.</td>
 
     </tr>
 
@@ -634,7 +474,7 @@ If you're setting up your AMI for the first time, you will need to creat= e a se
 
     <td>HTTPS</td>
 
-    <td>Secure web based Management Console. _Required for basic installatio= n and configuration._</td>
+    <td>Secure web based Management Console. _Required for basic installatio= n and configuration.</td>
 
     </tr>
 
@@ -644,7 +484,7 @@ If you're setting up your AMI for the first time, you will need to creat= e a se
 
     <td>Git</td>
 
-    <td>Simple Git protocol port. Clone and fetch operations to public reposito= ries only. _Unencrypted network communication._</td>
+    <td>Simple Git protocol port. Clone and fetch operations to public reposito= ries only. Unencrypted network communication.</td>
 
     </tr>
 
@@ -656,23 +496,23 @@ If you're setting up your AMI for the first time, you will need to creat= e a se
 
 _
 
-### [Creating the GitHub Enterprise Server instance](3D"https:=)
+### [Creating the GitHub Enterprise Server instance]
 
 To create the instance, you'll need to launch an EC2 instance with your = GitHub Enterprise Server AMI and attach an additional storage volume for yo= ur instance data. For more information, see "[Hardware considerations](3D"https://help.github=)."
 
 <div class="3D&quot;extended-markdown" note="" border="" rounded-1="" mb-4="" p-3="" border-blue="bg-blue-light" f5"="">
 
-**Note:** You can encrypt the data disk to gain an extra le= vel of security and ensure that any data you write to your instance is prot= ected. There is a slight performance impact when using encrypted disks. If = you decide to encrypt your volume, we strongly recommend doing so **b= efore** starting your instance for the first time. For more information, see the [Amazon guide on EBS encryption](3D"http://docs.aws.amazon.com/AWSEC2/=).
+**Note:** You can encrypt the data disk to gain an extra level of security and ensure that any data you write to your instance is protected. There is a slight performance impact when using encrypted disks. If = you decide to encrypt your volume, we strongly recommend doing so **before** starting your instance for the first time. For more information, see the [Amazon guide on EBS encryption](3D"http://docs.aws.amazon.com/AWSEC2/=).
 
 </div>
 
 <div class="3D&quot;extended-markdown" warning="" border="" rounded-1="" mb-4="" p-3="" border-re="d" bg-red-light="" f5"="">
 
-**Warning:** If you decide to enable encryption after you'v= e configured your instance, you will need to migrate your data to the encry= pted volume, which will incur some downtime for your users.
+**Warning:** If you decide to enable encryption after you'v= e configured your instance, you will need to migrate your data to the encrypted volume, which will incur some downtime for your users.
 
 </div>
 
-#### [Launching an EC2 instance](3D"https://help.github.com/en/=)
+#### [Launching an EC2 instance]
 
 In the AWS CLI, launch an EC2 instance using your AMI and the security g= roup you created. Attach a new block device to use as a storage volume for = your instance data, and configure the size based on your user license count= . For more information, see "[run-instances](3D"http://docs.aws.amazon.com/cli/late=)" in the AWS document= ation.
 
@@ -687,27 +527,23 @@ em>SIZE`_`,"VolumeType":"_TYPE_"}}]' \
   --region _REGION_ \
   --ebs-optimized`</pre>
 
-#### <a= href="3D&quot;https://help.github.com/en/enterprise/2.19/admin/installation/inst=" alling-github-enterprise-server-on-aws#allocating-an-elastic-ip-and-associating-it-with-the-instance&quot;">Allocating an Elastic IP and associating it with= the instance</a=>
+#### Allocating an Elastic IP and associating it with= the instance
 
-If this is a production instance, we strongly recommend allocating an El= astic IP (EIP) and associating it with the instance before proceeding to Gi= tHub Enterprise Server configuration. Otherwise, the public IP address of t= he instance will not be retained after instance restarts. For more informat= ion, see "[Alloc= ating an Elastic IP Address](3D"http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ela=)" and "[Associating an Elastic IP Address with a Running In= stance](3D"http://docs.aws.amazon.com=)" in the Amazon documentation.
+If this is a production instance, we strongly recommend allocating an Elastic IP (EIP) and associating it with the instance before proceeding to GitHub Enterprise Server configuration. Otherwise, the public IP address of the instance will not be retained after instance restarts. For more information, see "[Allocating an Elastic IP Address](3D"http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ela=)" and "[Associating an Elastic IP Address with a Running Instance](3D"http://docs.aws.amazon.com=)" in the Amazon documentation.
 
-Both primary and replica instances should be assigned separate EIPs in p= roduction High Availability configurations. For more information, see "<a h="ref=3D&quot;https://help.github.com/enterprise/2.19/admin/guides/installation/co=" nfiguring-github-enterprise-server-for-high-availability="" "="">Configuring GitH= ub Enterprise Server for High Availability</a>."
+Both primary and replica instances should be assigned separate EIPs in p= roduction High Availability configurations. For more information, see "Configuring GitHub Enterprise Server for High Availability."
 
-### [Configuring the GitHub Enterprise Server instance](3D"htt=)
+### [Configuring the GitHub Enterprise Server instance]
 
 1.  Copy the virtual machine's public DNS name, and paste it into a web browser.
 
-2.  At the prompt, upload your license file and set a management console pas= sword. For more information, see "[Managing your GitHub Enterprise Server license](3D"https://help.github.com/enterp=)."
+2.  At the prompt, upload your license file and set a management console password. For more information, see "[Managing your GitHub Enterprise Server license]."
 
-3.  In the [Management Console](3D"https://help.github.com/enterprise/2.19/admin/guides/i=), conf= igure and save your desired settings. For more information, see "[Configuring the GitHub Enterprise Server appliance](3D"https://help.github.com/en/enterprise=)."
+3.  In the [Management Console], configure and save your desired settings. For more information, see "[Configuring the GitHub Enterprise Server appliance]."
 
 4.  The instance will restart automatically.
 
 5.  Click **Visit your instance**.
-
-### [Further reading](3D"https://help.github.com/en/enterprise=)
-
-*   "[System overview](3D"https://help.github.com/en/enterprise/2.19/admin/guides/ins=)"
 
 **</article>
 
