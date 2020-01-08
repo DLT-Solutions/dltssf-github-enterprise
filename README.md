@@ -1,16 +1,10 @@
 # Installing GitHub Enterprise Server on = AWS
 
-=20 =20
-
 <div class="3D&quot;lead-mktg&quot;">
 
-To install GitHub Enterprise Server on Am= azon Web Services (AWS), you must launch an Amazon Elastic Compute Cloud (E= C2) instance and create and attach a separate Amazon Elastic Block Store (E= BS) data volume.
+To install GitHub Enterprise Server on Amazon Web Services (AWS), you must launch an Amazon Elastic Compute Cloud (EC2) instance and create and attach a separate Amazon Elastic Block Store (EBS) data volume.
 
 </div>
-
-=20 =20 =20 =20 =20
-
-### [In this article](3D"https://help.github.com/en/enterp=)
 
 *   [Prerequisites](3D"https://help.github.com/en/enter=)
 
@@ -26,13 +20,9 @@ To install GitHub Enterprise Server on Am= azon Web Services (AWS), you must lau
 
 *   [Configuring the GitHub Ent= erprise Server instance](3D"https://help.github.com/en/enter=)
 
-*   [Further reading](3D"https://help.github.com/en/enter=)
+### Prerequisites
 
-=20 =20
-
-### [Prerequisites](3D"https://help.github.com/en/enterpri=)
-
-*   You must have a GitHub Enterprise license file. To download an existing = license file or request a trial license, visit [enterprise.github.com](3D"https://enterpris=). For more information, see= "[Managing your GitHub E= nterprise Server license](3D"https://help.github.com/enterprise/2.19/admin/guides/installat=)."
+*   You must have a GitHub Enterprise license file. To download an existing = license file or request a trial license, visit [enterprise.github.com](3D"https://enterpris=). For more information, see= "[Managing your GitHub Enterprise Server license](3D"https://help.github.com/enterprise/2.19/admin/guides/installat=)."
 
 *   You must have an AWS account capable of launching EC2 instances and crea= ting EBS volumes. For more information, see the [Amazon Web Services website](3D"https://aws.amaz=).
 
@@ -48,7 +38,7 @@ This guide assumes you are familiar with the following AWS concepts:
 
 ### [Hardware considerations](3D"https://help.github.com/en/en=)
 
-GitHub Enterprise Server requires a persistent data disk separate from t= he root disk. For more information, see "[System overv= iew](3D"https://help.github.com=)."
+GitHub Enterprise Server requires a persistent data disk separate from t= he root disk. For more information, see "[System overview](3D"https://help.github.com=)."
 
 We recommend different hardware configurations based on the number of us= er licenses used in your GitHub Enterprise Server instance.
 
@@ -498,7 +488,7 @@ AMIs for GitHub Enterprise Server are available in the AWS GovCloud (US-= East a
 
 2.  Click **Get the latest release of GitHub Enterprise Server.**
 
-***   In the Select your platform drop-down menu, click **Amazon Web Ser= vices**.
+***   In the Select your platform drop-down menu, click **Amazon Web Services**.
 
     *   In the Select your AWS region drop-down menu, choose your desired region= .
 
@@ -666,7 +656,7 @@ If you're setting up your AMI for the first time, you will need to creat= e a se
 
 _
 
-### [Cre= ating the GitHub Enterprise Server instance](3D"https:=)
+### [Creating the GitHub Enterprise Server instance](3D"https:=)
 
 To create the instance, you'll need to launch an EC2 instance with your = GitHub Enterprise Server AMI and attach an additional storage volume for yo= ur instance data. For more information, see "[Hardware considerations](3D"https://help.github=)."
 
@@ -697,7 +687,7 @@ em>SIZE`_`,"VolumeType":"_TYPE_"}}]' \
   --region _REGION_ \
   --ebs-optimized`</pre>
 
-#### <a= href="3D&quot;https://help.github.com/en/enterprise/2.19/admin/installation/inst=" alling-github-enterprise-server-on-aws#allocating-an-elastic-ip-and-associa="ting-it-with-the-instance&quot;">Allocating an Elastic IP and associating it with= the instance</a=>
+#### <a= href="3D&quot;https://help.github.com/en/enterprise/2.19/admin/installation/inst=" alling-github-enterprise-server-on-aws#allocating-an-elastic-ip-and-associating-it-with-the-instance&quot;">Allocating an Elastic IP and associating it with= the instance</a=>
 
 If this is a production instance, we strongly recommend allocating an El= astic IP (EIP) and associating it with the instance before proceeding to Gi= tHub Enterprise Server configuration. Otherwise, the public IP address of t= he instance will not be retained after instance restarts. For more informat= ion, see "[Alloc= ating an Elastic IP Address](3D"http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ela=)" and "[Associating an Elastic IP Address with a Running In= stance](3D"http://docs.aws.amazon.com=)" in the Amazon documentation.
 
@@ -705,7 +695,7 @@ Both primary and replica instances should be assigned separate EIPs in p= roduct
 
 ### [Configuring the GitHub Enterprise Server instance](3D"htt=)
 
-1.  Copy the virtual machine's public DNS name, and paste it into a web brow= ser.
+1.  Copy the virtual machine's public DNS name, and paste it into a web browser.
 
 2.  At the prompt, upload your license file and set a management console pas= sword. For more information, see "[Managing your GitHub Enterprise Server license](3D"https://help.github.com/enterp=)."
 
@@ -722,112 +712,3 @@ Both primary and replica instances should be assigned separate EIPs in p= roduct
 **</article>
 
 </main>
-
-**=20
-
-<section class="3D&quot;mt-lg-9" py-7"="" style="3D&quot;background-color:" #fafbfc;"="">
-
-<div class="3D&quot;container-xl" px-3="" px-md-6"="">
-
-<div class="3D&quot;gutter" gutter-xl-spacious="" d-md-flex"="">
-
-<div class="3D&quot;col-12" col-md-5"="">
-
-### Ask a human
-
-#### Can't find what you're looking for?
-
-[C= ontact us](3D"https://support.github.com/contact")</div>
-
-<div class="3D&quot;col-12" col-md-3="" ml-md-6="" ml-lg-0="" position-relative"=""><svg class="3D&quot;position-relative" position-md-absolute="" right-n8="" right="-lg-8" top-lg-3"="" width="3D&quot;240px&quot;" xmlns="3D&quot;http://www.w3.org/2000/svg&quot;" viewbo="x=3D&quot;0" 0="" 518.6="" 406.73"=""><g data-name="3D&quot;Layer" 2"=""><g id="3D&quot;Layer_5&quot;" data-name="=3D&quot;Layer" 5"="">= <path d="=3D&quot;M370.63,245.84s-29.95-4.67-38.54,22.2,15.19,42.07,27.64,48.29c6.55,3.28=" ,25.37,10.51,28.26,7.79,5.43-7.16-3.68-24.71-.59-42.84.78-4.54,6-13.45,6-17="-13.88-42.95-40.28-125.12-59.87-129.63-7.52-1.73-5.66,16.81-5.66,16.81&quot;" sty="le=3D&quot;fill:none;stroke:#0366d6;stroke-miterlimit:10;stroke-width:3px&quot;"><path d="3D&quot;M317,181.44s3.88,25.34,13.06,42.32,16.43,26.58,16.43,26.58&quot;" st="yle=3D&quot;fill:none;stroke:#0366d6;stroke-miterlimit:10;stroke-width:3px&quot;">= <path d="3D&quot;M2.93,393.7a9.52,9.52,0,0,1,4.24-3,13.51,13.51,0,0,1,5.8.2&quot;" styl="e=3D&quot;fill:none;stroke:#0366d6;stroke-miterlimit:10;stroke-width:2px&quot;">=</path></path></path></g></g></svg></div>
-
-</div>
-
-</div>
-
-</section>
-
-<div class="3D&quot;footer" mt-6"="">
-
-<div class="3D&quot;container-xl" px-3="" px-md-6"="">
-
-<div class="3D&quot;d-flex" flex-wrap="" py-5="" mb-5"="">
-
-<div class="3D&quot;col-12" col-lg-4="" mb-5"="">[](3D"https://github.com/")</div>
-
-<div class="3D&quot;col-6" col-sm-3="" col-lg-2="" mb-6="" mb-md-2="" pr-3="" pr-lg-0="" pl-lg="-4&quot;">
-
-#### Product
-
-*   [Features](3D"https://github.com/fea=)
-*   [Security](3D"https://github.com/sec=)
-*   [Enterprise](3D"https://github.com/ent=)
-*   [Case Studies](3D"https://github.com/cas=)
-*   [Pricing](3D"https://github.com/pri=)
-*   [Resources](3D"https://resources.gith=)
-
-</div>
-
-<div class="3D&quot;col-6" col-sm-3="" col-lg-2="" mb-6="" mb-md-2="" pr-3="" pr-md-0="" pl-md="-4&quot;">
-
-#### Platform
-
-*   [= Developer API](3D"https://developer.gith=)
-*   [Partners](3D"http://partner.github.=)
-*   [Atom](3D"https://atom.io/")
-*   [Electron](3D"http://electron.atom.i=)
-*   [GitHub Desktop](3D"https://desktop.github=)
-
-</div>
-
-<div class="3D&quot;col-6" col-sm-3="" col-lg-2="" mb-6="" mb-md-2="" pr-3="" pr-md-0="" pl-md="-4&quot;">
-
-#### Support
-
-*   [Help](3D"https://help.github.co=)
-*   [Community Forum](3D"https://github.communi=)
-*   [Training](3D"https://services.githu=)
-*   [Status](3D"https://githubstatus.c=)
-*   [Contact GitHub](3D"https://support.github=)
-
-</div>
-
-<div class="3D&quot;col-6" col-sm-3="" col-lg-2="" mb-6="" mb-md-2="" pr-3="" pr-md-0="" pl-md="-4&quot;">
-
-#### Company
-
-*   [About](3D"https://github.com/abo=)
-*   [Blog](3D"https://github.blog/")
-*   [Careers](3D"https://github.com/abo=)
-*   [Press](3D"https://github.com/abo=)
-*   [Shop](3D"https://shop.github.co=)
-
-</div>
-
-</div>
-
-</div>
-
-<div class="3D&quot;bg-gray-light&quot;">
-
-<div class="3D&quot;container-xl" px-3="" px-md-6="" f6="" py-4="" d-sm-flex="" flex-justify-="between" flex-row-reverse="" flex-items-center"="">
-
-*   [](3D"https://twitter.com/github" "3D"GitHub")
-*   [](3D"https://www.facebook.com/GitHub" "3D"GitHub")
-*   [](3D"https://www.youtube.com/github" "3D"GitHub")
-*   [](3D"https://www.linkedin.com/company/github" "3D"GitH=")
-*   [](3D"https://github.com/github" "3D"GitHub's")
-
-*   =C2=A9 2020 GitHub, Inc.
-*   [Terms](3D"https://help.github.com/articles/gith=)
-*   [Privacy](3D"https://help.github.com/articles/github-privacy-stat=)
-
-</div>
-
-</div>
-
-</div>
-
-**</main>
-
-**=20**
